@@ -34,13 +34,25 @@ export default class App extends Component {
     ]
   }
 
+  //addTodo用于添加一个对象，接收的参数是todo对象
+  addTodo = (todoObj) => {
+    //获取原来的todo
+    const { todos } = this.state
+    //追加一个todo
+    const newTodos = [todoObj, ...todos]
+    //更新状态
+    this.setState({
+      todos: newTodos
+    })
+  }
+
 
   render () {
     return (
 
       <div className="todo-container">
         <div className="todo-wrap">
-          <Header />
+          <Header addTodo={this.addTodo} />
           <List todos={this.state.todos} />
           <Footer />
         </div>
